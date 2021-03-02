@@ -1,0 +1,45 @@
+<div>
+    <img class="bgImg img-fluid" src="../../assets/bg.jpg">
+    <div class="container ">
+        <div class="row offsetTop">
+        </div>
+        <div class="row content">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-10">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-10 mb-2">
+                            <span id="mainTitle">Unsplash</span>
+                        </div>
+                    </div>
+                    <div class="row ">
+                        <div class="col-sm subTitle ">
+                            <p class="m-0 p-0">The internet’s source of freely-usable images.</p>
+                        </div>
+                    </div>
+                    <div class="row ">
+                        <div class="col-sm subTitle ">
+                            <p class="m-0 p-0 mb-3">Powered by creators everywhere.</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <app-input-keywords></app-input-keywords>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm">
+                            Trending:
+                            <ng-container *ngFor="let trend of trending">
+                                <a>{{trend}}</a>,&nbsp;
+
+                            </ng-container>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
