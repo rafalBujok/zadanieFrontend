@@ -30,8 +30,8 @@
                     <div class="row">
                         <div class="col-sm">
                             Trending:
-                            <ng-container *ngFor="let trend of trending">
-                                <a>{{trend}}</a>,&nbsp;
+                            <ng-container *ngFor="let trend of trending; let last = last">
+                                <a>{{trend}}</a><span *ngIf="!last">,&nbsp;</span>
 
                             </ng-container>
 
