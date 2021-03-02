@@ -1,5 +1,5 @@
 <div class="flexContainer">
-    <button class="searchButton"><mat-icon class="searchIcon" aria-hidden="false" aria-label="Example home icon">search</mat-icon></button>
+    <button (click)="submit()" class="searchButton"><mat-icon class="searchIcon" aria-hidden="false" aria-label="Example home icon">search</mat-icon></button>
 
     <input type="text" class="browseInput" [(ngModel)]="searchPhase" placeholder="Search free high-resolution photos">
 </div>

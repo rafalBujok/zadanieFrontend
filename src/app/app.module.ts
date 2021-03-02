@@ -1,3 +1,4 @@
+import { ApiService } from './services/api.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -9,23 +10,31 @@ import { HomeComponent } from './home/home.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {MatIconModule} from '@angular/material/icon';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
+import { HttpClientModule } from '@angular/common/http';
+import { GalleryComponent, DialogContentComponent } from './gallery/gallery.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import { CommonModule } from '@angular/common';
 @NgModule({
   declarations: [
     AppComponent,
     InputKeywordsComponent,
-    HomeComponent
+    HomeComponent,
+    GalleryComponent,
+    DialogContentComponent
   ],
   imports: [
+    CommonModule,
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,
     BrowserAnimationsModule,
     NgbModule,
-    MatIconModule
+    MatIconModule,
+    HttpClientModule,
+    MatDialogModule
   ],
-  providers: [],
+  providers: [ApiService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

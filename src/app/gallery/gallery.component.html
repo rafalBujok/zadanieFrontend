@@ -1,0 +1,13 @@
+<div class="container">
+    <div class="row">
+        <app-input-keywords style="width:100%"></app-input-keywords>
+    </div>
+    <div class="row">{{title}}</div>
+    <div>
+        <div class="gridContainer mt-2" *ngIf="items">
+            <span *ngFor="let item of items">
+                <div (click)="openDialog(item)" class="gridItem"><img [src]="item.urls.regular"></div>
+            </span>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,28 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm"><img class="img-fluid" [src]='data.profileImage'>
+        </div>
+        <div class="col-sm">
+            <div class="row">
+                <div class="col-sm">{{data.authorFirstName}}&nbsp;{{data.authorLastName}}</div>
+            </div>
+            <div class="row">
+                <div class="col-sm">{{data.instagram}}</div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm">
+            <img class="img-fluid" [src]='data.fullImage'>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm">
+            <div>
+                <ng-container *ngIf="data.locationCountry!==null"> {{data.locationCountry}},&nbsp;</ng-container>
+                <ng-container *ngIf="data.locationCity!==null"> {{data.locationCity}},&nbsp;</ng-container>
+                {{data.createdAt}}</div>
+        </div>
+    </div>
+
+</div>
