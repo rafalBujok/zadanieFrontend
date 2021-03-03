@@ -1,5 +1,15 @@
 <div class="flexContainer">
-    <button (click)="submit()" class="searchButton"><mat-icon class="searchIcon" aria-hidden="false" aria-label="Example home icon">search</mat-icon></button>
+    <button class="searchButton"><mat-icon class="searchIcon" (click)="submit()" aria-hidden="false" aria-label="Example home icon">search</mat-icon></button>
 
-    <input type="text" class="browseInput" [(ngModel)]="searchPhase" placeholder="Search free high-resolution photos">
+    <input type="text" [formControl]="control" class="browseInput" (keyup.enter)="submit()" (keyup)="autoComplate()" placeholder="Search free high-resolution photos" [matAutocomplete]="auto">
+
+    <mat-autocomplete #auto="matAutocomplete">
+        <ng-container *ngIf="autoComplateStart">
+
+            <mat-option (click)="submit(word)" *ngFor="let word of filteredWords | async" [value]="word">
+                {{word}}
+            </mat-option>
+        </ng-container>
+    </mat-autocomplete>
+
 </div>

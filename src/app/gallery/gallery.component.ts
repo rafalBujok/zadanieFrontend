@@ -49,9 +49,8 @@ export class GalleryComponent implements OnInit, OnDestroy {
   }
   getTags() {
     let tagsIndex = 0;
-
     // all images loop
-    for (let n = 0; n < 20; n++) {
+    for (let n = 0; n < this.items.length; n++) {
       // if image got any tags
       if (this.items[n].tags.length > 0) {
         // tags loop

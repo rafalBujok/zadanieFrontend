@@ -17,6 +17,7 @@ import { CommonModule } from '@angular/common';
 import { DateMonthYearPipe } from './pipes/date-month-year.pipe';
 import { TagsComponent } from './tags/tags.component';
 import { MatButtonModule } from '@angular/material/button';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,7 +39,8 @@ import { MatButtonModule } from '@angular/material/button';
     MatIconModule,
     HttpClientModule,
     MatDialogModule,
-    MatButtonModule
+    MatButtonModule,
+    MatAutocompleteModule
   ],
   providers: [ApiService],
   bootstrap: [AppComponent]
