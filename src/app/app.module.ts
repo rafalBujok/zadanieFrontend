@@ -14,13 +14,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { GalleryComponent, DialogContentComponent } from './gallery/gallery.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import { CommonModule } from '@angular/common';
+import { DateMonthYearPipe } from './pipes/date-month-year.pipe';
 @NgModule({
   declarations: [
     AppComponent,
     InputKeywordsComponent,
     HomeComponent,
     GalleryComponent,
-    DialogContentComponent
+    DialogContentComponent,
+    DateMonthYearPipe
   ],
   imports: [
     CommonModule,

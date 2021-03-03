@@ -1,27 +1,26 @@
 <div class="container">
-    <div class="row">
-        <div class="col-sm"><img class="img-fluid" [src]='data.profileImage'>
-        </div>
-        <div class="col-sm">
-            <div class="row">
-                <div class="col-sm">{{data.authorFirstName}}&nbsp;{{data.authorLastName}}</div>
+    <div class="row d-block mb-3">
+        <div class="col-sm userInfo">
+            <div class="mr-2 profile">
+                <a href="https://www.unsplash.com/@{{data.username}}" target="_blank"><img class="m-a" [src]='data.profileImage'></a>
             </div>
-            <div class="row">
-                <div class="col-sm">{{data.instagram}}</div>
+            <div class="userData">
+                <span class="mb-0"><a href="https://www.unsplash.com/@{{data.username}}" target="_blank">{{data.authorFirstName}}&nbsp;{{data.authorLastName}}</a><br></span>
+                <a href="https://www.unsplash.com/@{{data.username}}" target="_blank">@{{data.username}}</a>
             </div>
         </div>
     </div>
     <div class="row">
         <div class="col-sm">
-            <img class="img-fluid" [src]='data.fullImage'>
+            <img class="img-fluid fullImage" [src]='data.fullImage'>
         </div>
     </div>
-    <div class="row">
+    <div class="row mt-3">
         <div class="col-sm">
             <div>
                 <ng-container *ngIf="data.locationCountry!==null"> {{data.locationCountry}},&nbsp;</ng-container>
                 <ng-container *ngIf="data.locationCity!==null"> {{data.locationCity}},&nbsp;</ng-container>
-                {{data.createdAt}}</div>
+                {{data.createdAt|monthYear}}</div>
         </div>
     </div>
 

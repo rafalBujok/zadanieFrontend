@@ -33,8 +33,8 @@ export class GalleryComponent implements OnInit, OnDestroy {
           authorFirstName: element.user.first_name,
           authorLastName: element.user.last_name,
           profileImage: element.user.profile_image.small,
-          instagram: element.user.instagram_username,
-          fullImage: element.urls.full,
+          username: element.user.username,
+          fullImage: element.urls.raw,
           locationCountry: val.location.country,
           locationCity: val.location.city,
           createdAt: val.created_at
