@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 
@@ -10,12 +10,16 @@ import { Router } from '@angular/router';
 })
 export class InputKeywordsComponent implements OnInit {
   searchPhase: string;
-  constructor( private router: Router) { }
+  @Input() phase?: string;
+  constructor(private router: Router) { }
 
-  ngOnInit(): void { }
-  submit() {
-    this.router.navigateByUrl('c/' + this.searchPhase);
+  ngOnInit(): void {
 
   }
-
+  ngOnChanges() {
+    this.searchPhase = this.phase;
+  }
+  submit() {
+    this.router.navigateByUrl('c/' + this.searchPhase);
+  }
 }

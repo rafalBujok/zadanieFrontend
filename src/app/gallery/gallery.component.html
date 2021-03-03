@@ -1,8 +1,20 @@
 <div class="container">
     <div class="row">
-        <app-input-keywords style="width:100%"></app-input-keywords>
+        <div class="col-sm m-3">
+            <app-input-keywords [phase]="title" style="width:100%"></app-input-keywords>
+        </div>
     </div>
-    <div class="row">{{title}}</div>
+
+    <div class="row">
+        <div class="col-sm-12 ">
+            <h1>{{title|titlecase}}</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm">
+            <app-tags [tags]=tags></app-tags>
+        </div>
+    </div>
     <div>
         <div class="gridContainer mt-2" *ngIf="items">
             <span *ngFor="let item of items">

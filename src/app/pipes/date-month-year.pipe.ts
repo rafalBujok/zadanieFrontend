@@ -5,9 +5,9 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class DateMonthYearPipe implements PipeTransform {
 
-  transform(date: Date | string): string {
-    date = new Date();
-    const monthNumber: number = date.getMonth();
+  transform(date: string | Date): string {
+    date = new Date(date)
+    const monthNumber: number = date.getMonth() + 1;
     const yearString: string = date.getFullYear().toString();
     let monthString: string;
     switch (monthNumber) {

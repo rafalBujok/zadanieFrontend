@@ -14,20 +14,22 @@ export class GalleryComponent implements OnInit, OnDestroy {
   constructor(private api: ApiService, private route: ActivatedRoute, public dialog: MatDialog) { }
   items: any;
   title: string;
-
+  tags: string[] = [];
   routeParamsSub: Subscription;
   ngOnInit(): void {
     this.routeParamsSub = this.route.params.subscribe(params => {
       this.title = params.category;
       this.api.getImageList(params.category).subscribe((val: any) => {
+        this.tags = []
         this.items = val.results;
+        this.getTags()
+        this.title = params.category;
 
       })
     })
   }
   openDialog(element) {
     this.api.getImage(element.id).subscribe((val: any) => {
-      console.log(val)
       this.dialog.open(DialogContentComponent, {
         data: {
           authorFirstName: element.user.first_name,
@@ -45,7 +47,31 @@ export class GalleryComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.routeParamsSub.unsubscribe();
   }
+  getTags() {
+    let tagsIndex = 0;
+
+    // all images loop
+    for (let n = 0; n < 20; n++) {
+      // if image got any tags
+      if (this.items[n].tags.length > 0) {
+        // tags loop
+        for (let m = 0; m < 3; m++) {
+
+          // check if tag exist in tags array
+          if (!this.tags.includes(this.items[n].tags[m].title) &&
+            (this.items[n].tags[m].title !== this.title) &&
+            (this.items[n].tags[m].title.length < 20) &&
+            (tagsIndex < 6)) {
+            this.tags[tagsIndex] = this.items[n].tags[m].title;
+            tagsIndex++;
+          }
+        }
+      }
+    }
+  }
+
 }
+
 @Component({
   selector: 'dialog-content',
   templateUrl: 'dialog-content.component.html',

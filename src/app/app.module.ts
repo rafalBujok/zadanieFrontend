@@ -8,13 +8,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { InputKeywordsComponent } from './input-keywords/input-keywords.component';
 import { HomeComponent } from './home/home.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import {MatIconModule} from '@angular/material/icon';
+import { MatIconModule } from '@angular/material/icon';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { GalleryComponent, DialogContentComponent } from './gallery/gallery.component';
-import {MatDialogModule} from '@angular/material/dialog';
+import { MatDialogModule } from '@angular/material/dialog';
 import { CommonModule } from '@angular/common';
 import { DateMonthYearPipe } from './pipes/date-month-year.pipe';
+import { TagsComponent } from './tags/tags.component';
+import { MatButtonModule } from '@angular/material/button';
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,7 +24,8 @@ import { DateMonthYearPipe } from './pipes/date-month-year.pipe';
     HomeComponent,
     GalleryComponent,
     DialogContentComponent,
-    DateMonthYearPipe
+    DateMonthYearPipe,
+    TagsComponent
   ],
   imports: [
     CommonModule,
@@ -34,7 +37,8 @@ import { DateMonthYearPipe } from './pipes/date-month-year.pipe';
     NgbModule,
     MatIconModule,
     HttpClientModule,
-    MatDialogModule
+    MatDialogModule,
+    MatButtonModule
   ],
   providers: [ApiService],
   bootstrap: [AppComponent]
