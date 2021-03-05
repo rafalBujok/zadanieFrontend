@@ -21,6 +21,7 @@ export class InputKeywordsComponent implements OnInit {
   filteredWords: Observable<string[]>;
   words: string[];
   autoComplateStart = false;
+  noWords = false;
   filterLengthSub: Subscription;
 
   @Input() phase?: string;
@@ -50,29 +51,30 @@ export class InputKeywordsComponent implements OnInit {
       const filterValue = this._normalizeValue(value);
       const returnValue = this.words.filter(word => this._normalizeValue(word).startsWith(filterValue)).slice(0, 5);
       if (returnValue.length === 0) {
+        this.noWords = true;
 
-        this.showTooltip();
+        //  this.showTooltip();
 
       } else {
-
-        this.hideTooltip();
+        this.noWords = false;
+        // this.hideTooltip();
         return returnValue;
       }
     } else {
-      if (value.length>0) {
-
-        this.hideTooltip();
+      if (value.length > 0) {
+        this.noWords = false;
+        // this.hideTooltip();
       }
     }
   }
   private _normalizeValue(value: string): string {
     return value.toLowerCase().replace(/\s/g, '');
   }
-  showTooltip() {
-    this.tooltip.show();
-  }
-  hideTooltip() {
-    this.tooltip.hide();
-  }
+  // showTooltip() {
+  //   this.tooltip.show();
+  // }
+  // hideTooltip() {
+  //   this.tooltip.hide();
+  // }
 
 }

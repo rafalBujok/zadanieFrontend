@@ -1,7 +1,7 @@
 <div class="flexContainer">
 
     <button class="searchButton">
-      <span matTooltipClass="custom-tooltip" #tooltip="matTooltip" matTooltip="Brak wyników" matTooltipPosition="right"></span>
+      <!-- <span matTooltipClass="custom-tooltip" #tooltip="matTooltip" matTooltip="Brak wyników" matTooltipPosition="right"></span> -->
       <mat-icon  class="searchIcon" (click)="submit()" aria-hidden="false" aria-label="Example home icon">search</mat-icon>
     </button>
     <input type="text" [formControl]="control" class="browseInput" (keydown.enter)="submit()" placeholder="Search free high-resolution photos" [matAutocomplete]="auto">
@@ -11,6 +11,7 @@
         <mat-option show (click)="submit(word)" disable="true" *ngFor="let word of filteredWords | async" [value]="word">
             {{word}}
         </mat-option>
+        <mat-option *ngIf="noWords" style="font-style:oblique; font-size: 18px;" [disabled]=true>Brak wyników</mat-option>
 
     </mat-autocomplete>
 
