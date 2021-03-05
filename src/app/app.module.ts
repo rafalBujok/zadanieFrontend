@@ -18,6 +18,7 @@ import { DateMonthYearPipe } from './pipes/date-month-year.pipe';
 import { TagsComponent } from './tags/tags.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import {MatTooltipModule} from '@angular/material/tooltip';
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,7 +41,8 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
     HttpClientModule,
     MatDialogModule,
     MatButtonModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    MatTooltipModule
   ],
   providers: [ApiService],
   bootstrap: [AppComponent]

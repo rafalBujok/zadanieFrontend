@@ -22,8 +22,9 @@ export class GalleryComponent implements OnInit, OnDestroy {
       this.api.getImageList(params.category).subscribe((val: any) => {
         this.tags = []
         this.items = val.results;
-        this.getTags()
         this.title = params.category;
+        this.getTags()
+
       })
     })
   }

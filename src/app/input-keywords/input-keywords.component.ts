@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { MatTooltip } from '@angular/material/tooltip';
 
 import { Router } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
@@ -10,10 +11,12 @@ import { startWith, map } from 'rxjs/operators';
 @Component({
   selector: 'app-input-keywords',
   templateUrl: './input-keywords.component.html',
-  styleUrls: ['./input-keywords.component.scss']
+  styleUrls: ['./input-keywords.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class InputKeywordsComponent implements OnInit {
 
+  @ViewChild('tooltip') tooltip: MatTooltip;
   control = new FormControl();
   filteredWords: Observable<string[]>;
   words: string[];
@@ -47,16 +50,28 @@ export class InputKeywordsComponent implements OnInit {
       const returnValue = this.words.filter(word => this._normalizeValue(word).includes(filterValue)).slice(0, 5);
       if (returnValue.length === 0) {
         this.noWords = true;
-        //return ['Brak wyników']
+        this.showTooltip();
+
       } else {
         this.noWords = false;
+        this.hideTooltip();
         return returnValue;
       }
     } else {
-      this.noWords = false;
+      if (value.length>0) {
+        this.noWords = false;
+        this.hideTooltip();
+      }
     }
   }
   private _normalizeValue(value: string): string {
     return value.toLowerCase().replace(/\s/g, '');
   }
+  showTooltip() {
+    this.tooltip.show();
+  }
+  hideTooltip() {
+    this.tooltip.hide();
+  }
+
 }
