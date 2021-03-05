@@ -10,9 +10,11 @@ import { Component, Input, OnChanges, OnInit } from '@angular/core';
 export class TagsComponent implements OnInit, OnChanges {
   @Input() tags: string[];
   xPosition = 0;
-  transformNumber = 145;
-  totalBarWidth: number;
-  windowWidth: number;
+  transformNumber = 150;
+  totalBarWidth = 0;
+  windowWidth = 0;
+  offscreenWidth = 0;
+  tagItemWidth = 145;
   barAtLeft = false;
   barAtRight = true;
   constructor() { }
@@ -21,23 +23,34 @@ export class TagsComponent implements OnInit, OnChanges {
 
   }
   ngOnChanges() {
-    console.log(this.tags.length * 145)
-    console.log(document.getElementById('bar').offsetWidth)
+    this.clearTagBar()
+  }
 
+  clearTagBar() {
     this.windowWidth = document.getElementById('bar').offsetWidth;
-    this.totalBarWidth = this.tags.length * 145;
-    console.log(Math.ceil((this.totalBarWidth-this.windowWidth) /145))
+    this.totalBarWidth = this.tags.length * this.tagItemWidth;
+    this.offscreenWidth = this.totalBarWidth - this.windowWidth;
+    this.xPosition = 0;
+    document.getElementById('bar').style.transform = 'translateX(0px)';
+    this.barAtLeft = false;
+    this.barAtRight = true;
+    if (this.xPosition <= -this.offscreenWidth) {
+      this.barAtRight = false;
+    }
   }
 
   tagsBarToRight() {
     const bar = document.getElementById('bar');
 
     bar.style.transform = 'translateX(' + (this.xPosition + this.transformNumber) + 'px)';
+
     this.xPosition += this.transformNumber;
     if (this.xPosition >= 0) {
       this.barAtLeft = false;
     }
-    console.log(this.xPosition)
+    if (this.xPosition >= -this.offscreenWidth) {
+      this.barAtRight = true;
+    }
   }
   tagsBarToLeft() {
     const bar = document.getElementById('bar');
@@ -47,6 +60,8 @@ export class TagsComponent implements OnInit, OnChanges {
     if (this.xPosition <= 0) {
       this.barAtLeft = true;
     }
-    console.log(this.xPosition)
+    if (this.xPosition <= -this.offscreenWidth) {
+      this.barAtRight = false;
+    }
   }
 }

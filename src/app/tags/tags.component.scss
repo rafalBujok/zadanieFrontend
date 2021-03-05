@@ -58,3 +58,7 @@
     display: block;
     z-index: 0;
 }
+
+#bar {
+    transition: transform .5s linear;
+}
