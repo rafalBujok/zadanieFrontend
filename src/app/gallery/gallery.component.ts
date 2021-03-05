@@ -24,11 +24,11 @@ export class GalleryComponent implements OnInit, OnDestroy {
         this.items = val.results;
         this.getTags()
         this.title = params.category;
-
       })
     })
   }
   openDialog(element) {
+
     this.api.getImage(element.id).subscribe((val: any) => {
       this.dialog.open(DialogContentComponent, {
         data: {
@@ -60,7 +60,8 @@ export class GalleryComponent implements OnInit, OnDestroy {
           if (!this.tags.includes(this.items[n].tags[m].title) &&
             (this.items[n].tags[m].title !== this.title) &&
             (this.items[n].tags[m].title.length < 20) &&
-            (tagsIndex < 6)) {
+            // number of tags to displayed
+            (tagsIndex <14)) {
             this.tags[tagsIndex] = this.items[n].tags[m].title;
             tagsIndex++;
           }

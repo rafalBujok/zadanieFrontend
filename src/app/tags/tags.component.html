@@ -1,3 +1,12 @@
-<div class="" *ngFor="let tag of tags">
-    <button class="float-left p-1 m-1 tagButton" [routerLink]="['/c', tag]" mat-stroked-button>{{tag|titlecase}}</button>
+<div class="tagsRow">
+    <button class="scrollButton" *ngIf="barAtLeft" (click)="tagsBarToRight()" id="buttonLeft"><mat-icon class="m-auto" aria-hidden="false" aria-label="arrow icon">keyboard_arrow_left</mat-icon></button>
+    <button class="scrollButton" *ngIf="barAtRight" (click)="tagsBarToLeft()" id="buttonRight"><mat-icon class="m-auto" aria-hidden="false" aria-label="arrow icon">keyboard_arrow_right</mat-icon></button>
+    <div class="wrapper">
+        <div id="bar">
+            <div class="rowTags" *ngFor="let tag of tags">
+                <button class="tagItem" [routerLink]="['/c', tag]" mat-stroked-button>{{tag|titlecase}}</button>
+            </div>
+        </div>
+
+    </div>
 </div>

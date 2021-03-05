@@ -1,3 +1,60 @@
-.tagButton {
-    width: 145px;
+.wrapper {
+    display: block;
+    width: 100%;
+    overflow-x: hidden;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: auto;
+}
+
+.rowTags {
+    display: inline-block;
+}
+
+.tagItem {
+    width: 140px;
+    margin-left: 5px;
+}
+
+.scrollButton {
+    width: 90px;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    border: none;
+}
+
+#buttonLeft {
+    position: absolute;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    left: 0;
+    color: gray;
+    background: rgb(255, 255, 255);
+    background: linear-gradient(90deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
+     :hover {
+        color: black;
+    }
+}
+
+#buttonRight {
+    position: absolute;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    right: 0;
+    color: gray;
+    background: rgb(255, 255, 255);
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 100%);
+     :hover {
+        color: black;
+    }
+}
+
+.tagsRow {
+    position: relative;
+    display: block;
+    z-index: 0;
 }

@@ -19,5 +19,6 @@
 }
 
 .gridItem:hover {
-    cursor: zoom-in
+    cursor: zoom-in;
+    filter: brightness(70%)
 }
