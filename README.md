@@ -1,27 +1,11 @@
-# ZadanieTestoweFrontend
+Opis zadania: Stworzyć wyszukiwarkę zdjęć przy użyciu api Unsplash.com (https://unsplash.com/developers)
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.2.0.
+Pierwsza strona, zawiera input do wpisania szukanej frazy. Po wpisaniu minimum 3 znaków wyszukiwarka powinna pokazać podpowiedzi (w momencie braku podpowiedzi powinna się pojawić informacja o ich braku).
 
-## Development server
+Przejście ze strony głównej na wyniki wyszukiwania powinno się odbyć przez wciśnięcie klawisza ENTER lub poprzez kliknięcie w jedną z proponowanych w autocomplete opcji.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Druga strona pokazuje wyniki wyszukiwania. Na samej górze strony powinien się wyświetlić komponent wyszukiwarki.
 
-## Code scaffolding
+Po kliknięciu w zdjęcie na liście powinno się ono wyświetlić w oknie modalnym z informacją o autorze i miejscu, w którym zostało wykonane oraz dacie dodania (created_at) w formacie miesiąc rok (np styczeń 2020).
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Kod zadania powinien zostać umieszczony na platformie GitHub (lub jednej z jej alternatyw np.GitLab). Rozwiązane zadanie powinno być dostępne w wersji live (używając do tego GitHub Pages lub alternatywnej platformie albo umieszczone na własnym serwerze).
