@@ -11,10 +11,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MatIconModule } from '@angular/material/icon';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { GalleryComponent, DialogContentComponent } from './gallery/gallery.component';
+import { GalleryComponent } from './gallery/gallery.component';
+import { DialogContentComponent } from './gallery/dialog/dialog-content.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { CommonModule } from '@angular/common';
-import { DateMonthYearPipe } from './pipes/date-month-year.pipe';
 import { TagsComponent } from './tags/tags.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
@@ -26,7 +26,6 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     HomeComponent,
     GalleryComponent,
     DialogContentComponent,
-    DateMonthYearPipe,
     TagsComponent
   ],
   imports: [

@@ -1,8 +1,6 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, Input, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { MatTooltip } from '@angular/material/tooltip';
-
 import { Router } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
 import { startWith, map } from 'rxjs/operators';
@@ -14,20 +12,18 @@ import { startWith, map } from 'rxjs/operators';
   styleUrls: ['./input-keywords.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class InputKeywordsComponent implements OnInit {
+export class InputKeywordsComponent implements OnInit, OnDestroy {
 
-  @ViewChild('tooltip') tooltip: MatTooltip;
   control = new FormControl();
   filteredWords: Observable<string[]>;
   words: string[];
-  autoComplateStart = false;
   noWords = false;
-  filterLengthSub: Subscription;
+  wordsSub: Subscription;
 
   @Input() phase?: string;
   constructor(private router: Router, private http: HttpClient) { }
   ngOnInit(): void {
-    this.http.get('assets/words.json').subscribe((val: any) => {
+    this.wordsSub = this.http.get('assets/words.json').subscribe((val: any) => {
       this.words = val.commonWords;
     });
     this.filteredWords = this.control.valueChanges.pipe(
@@ -52,29 +48,27 @@ export class InputKeywordsComponent implements OnInit {
       const returnValue = this.words.filter(word => this._normalizeValue(word).startsWith(filterValue)).slice(0, 5);
       if (returnValue.length === 0) {
         this.noWords = true;
-
-        //  this.showTooltip();
+        return [];
 
       } else {
         this.noWords = false;
-        // this.hideTooltip();
         return returnValue;
       }
     } else {
       if (value.length > 0) {
         this.noWords = false;
-        // this.hideTooltip();
+        return [];
       }
     }
   }
   private _normalizeValue(value: string): string {
     return value.toLowerCase().replace(/\s/g, '');
   }
-  // showTooltip() {
-  //   this.tooltip.show();
-  // }
-  // hideTooltip() {
-  //   this.tooltip.hide();
-  // }
+  ngOnDestroy() {
+    if (this.wordsSub) {
+      this.wordsSub.unsubscribe();
+    }
+  }
+
 
 }

@@ -1,8 +1,9 @@
-import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
-import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { ApiService } from '../services/api.service';
+import { DialogContentComponent } from './dialog/dialog-content.component';
 
 @Component({
   selector: 'app-gallery',
@@ -16,10 +17,11 @@ export class GalleryComponent implements OnInit, OnDestroy {
   title: string;
   tags: string[] = [];
   routeParamsSub: Subscription;
+  imageSub: Subscription;
   ngOnInit(): void {
     this.routeParamsSub = this.route.params.subscribe(params => {
       this.title = params.category;
-      this.api.getImageList(params.category).subscribe((val: any) => {
+      this.imageSub = this.api.getImageList(params.category).subscribe((val: any) => {
         this.tags = []
         this.items = val.results;
         this.title = params.category;
@@ -46,7 +48,12 @@ export class GalleryComponent implements OnInit, OnDestroy {
     })
   }
   ngOnDestroy() {
-    this.routeParamsSub.unsubscribe();
+    if (this.routeParamsSub) {
+      this.routeParamsSub.unsubscribe();
+    }
+    if (this.imageSub) {
+      this.imageSub.unsubscribe();
+    }
   }
   getTags() {
     let tagsIndex = 0;
@@ -62,7 +69,7 @@ export class GalleryComponent implements OnInit, OnDestroy {
             (this.items[n].tags[m].title !== this.title) &&
             (this.items[n].tags[m].title.length < 20) &&
             // number of tags to displayed
-            (tagsIndex <14)) {
+            (tagsIndex < 14)) {
             this.tags[tagsIndex] = this.items[n].tags[m].title;
             tagsIndex++;
           }
@@ -73,11 +80,4 @@ export class GalleryComponent implements OnInit, OnDestroy {
 
 }
 
-@Component({
-  selector: 'dialog-content',
-  templateUrl: 'dialog-content.component.html',
-  styleUrls: ['dialog-content.component.scss']
-})
-export class DialogContentComponent {
-  constructor(@Inject(MAT_DIALOG_DATA) public data) { }
-}
+

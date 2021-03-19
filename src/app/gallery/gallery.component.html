@@ -18,7 +18,7 @@
     <div>
         <div class="gridContainer mt-2" *ngIf="items">
             <span *ngFor="let item of items">
-                <div (click)="openDialog(item)" class="gridItem"><img [src]="item.urls.regular"></div>
+                <div (click)="openDialog(item)" class="gridItem"><img [src]="item.urls.thumb"></div>
             </span>
         </div>
     </div>
